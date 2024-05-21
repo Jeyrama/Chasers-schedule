@@ -77,3 +77,5 @@ function solution(s, t) {
   }
   return baseDistance;
 }
+
+// or
