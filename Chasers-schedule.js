@@ -52,3 +52,28 @@ Based on above sequences, the maximum possible distance d is 10.
 
 
 // Solution
+
+function solution(s, t) { 
+  //This calculates the base distance if the runner never sprints
+  let baseDistance = s * t;
+  
+  //This calculates the max number of sprints available rounded up i.e. 5t === 3 sprints
+  let maxSprints = Math.ceil(t / 2)
+  
+  //This will calculate the distance gains from sprints, 
+  //ideally these sprints would be done at the end to minimize the 
+  //speed lose caused by the sprint.
+  for (let i = 0; i < maxSprints; i++) {
+    
+    //This calulates the distance gained each time that we sprint and we want to sprint as 
+    //long as it still provides an increase in distance. The first time that you sprint
+    //the runner gets the full distance, each sprint after will lose 3 distance.
+    
+    //Example: if s === 20, the first sprint gains 20, the runner loses 1 speed from sprinting
+    //and two speed from the new maximum sprint which is 18. This is why we minus 3. 
+    if (s - 3 * i > 0) {
+      baseDistance += s - 3 * i;
+    }
+  }
+  return baseDistance;
+}
