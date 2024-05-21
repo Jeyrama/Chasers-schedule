@@ -79,3 +79,13 @@ function solution(s, t) {
 }
 
 // or
+
+function solution(s, t) { 
+  let distance = s*t
+  let maxSprints = Math.ceil(t/2)
+  for (i = 0; i < maxSprints; i++) {
+    if(s - 3 * i > 0) distance += s - 3 * i
+    else break
+  }
+  return distance
+}
